@@ -50,10 +50,27 @@ def create_input_frame(container):
 
 #TODO: create_button_frame 
 
+def create_button_frame(containter):
+    frame = ttk.Frame(containter)
+
+    frame.columnconfigure(0,weight=1)
+    
+    ttk.Button(containter, text = 'Find Next').grid(row = 0, column = 0)
+    ttk.Button(containter, text = 'Replace').grid(row = 1, column = 0)
+    ttk.Button(containter, text = 'Replace All').grid(row = 2, column = 0)
+    ttk.Button(containter, text = 'Cancel').grid(row = 3, column = 0)
+
+    print(frame.winfo_children())
+    for widget in frame.winfo_children():
+        widget.grid(padx=5,pady=5)
+        
+    return frame
+
+
 def create_main_window():
     root = tk.Tk()
     root.title('Text Replace')
-    root.resizable(False,False)
+    root.resizable(0,0)
 
     try:
         #Windows only (remove the min/max button)
@@ -68,8 +85,8 @@ def create_main_window():
     input_frame = create_input_frame(root)
     input_frame.grid(column=0,row=0)
 
-    # button_frame = create_button_frame(root)
-    # button_frame.grid(column=1, row=0)
+    button_frame = create_button_frame(root)
+    button_frame.grid(column=1, row=0)
 
     root.mainloop()
 

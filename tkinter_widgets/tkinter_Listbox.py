@@ -42,4 +42,15 @@ def handle_item_select(e):
 
 listbox.bind('<<ListboxSelect>>', handle_item_select)
 
+# link a scrollbar to a list
+v_scrollbar = ttk.Scrollbar(
+    root,
+    orient=tk.VERTICAL,
+    command=listbox.yview,
+)
+
+listbox['yscrollcommand'] = v_scrollbar.set
+v_scrollbar.pack(padx=10,side=tk.RIGHT,fill=tk.Y)
+
+
 root.mainloop()
